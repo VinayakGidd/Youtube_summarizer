@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>🎥 AI YouTube Summarizer</h1>
+    </header>
+
+    <div class="container">
+        <p>Summarize YouTube videos instantly with AI-powered accuracy.</p>
+
+        <form method="POST">
+            <label for="video_url">YouTube Video URL</label>
+            <input type="text" id="video_url" name="video_url" placeholder="Paste YouTube link here" title="Enter a valid YouTube video URL" required>
+
+            <label for="method">Summarization Method</label>
+            <select id="method" name="method" title="Choose a summarization method" required>
+                <option value="tfidf">TF-IDF</option>
+                <option value="bart">BART</option>
+            </select>
+
+            <button type="submit" title="Click to generate summary">Generate Summary</button>
+        </form>
+
+        {% if summary %}
+        <h3>📄 Summary:</h3>
+        <textarea readonly title="Generated summary">{{ summary }}</textarea>
+        {% endif %}
+    </div>
+
+    <!-- Summarizing Steps Section -->
+    <section class="steps-section">
+        <h2>📌 How to Use the YouTube Summarizer</h2>
+        <div class="steps">
+            <div class="step">📌 Copy the YouTube video link you want to summarize.</div>
+            <div class="step">📌 Paste the link in the input box above.</div>
+            <div class="step">📌 Select a summarization method (TF-IDF or BART).</div>
+            <div class="step">📌 Click "Generate Summary" and wait for the AI to process.</div>
+            <div class="step">📌 Scroll up to view the generated summary!</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with ❤️ by DATA_PIRATES</p>
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+new one 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>🎥 AI YouTube Summarizer</h1>
+    </header>
+
+    <div class="container">
+        <p>Summarize YouTube videos instantly with AI-powered accuracy.</p>
+
+        <form method="POST">
+            <label for="video_url">YouTube Video URL</label>
+            <input type="text" id="video_url" name="video_url" placeholder="Paste YouTube link here" title="Enter a valid YouTube video URL" required>
+
+            <label for="method">Summarization Method</label>
+            <select id="method" name="method" title="Choose a summarization method" required>
+                <option value="tfidf">TF-IDF</option>
+                <option value="bart">BART</option>
+            </select>
+
+            <button type="submit" title="Click to generate summary">Generate Summary</button>
+        </form>
+
+        {% if summary %}
+        <h3>📄 Summary:</h3>
+        <textarea readonly title="Generated summary">{{ summary }}</textarea>
+        {% endif %}
+    </div>
+
+    <!-- Summarizing Steps Section -->
+    <section class="steps-container">
+        <!-- Left Side: 3D Image -->
+        <div class="image-container">
+            <img src="static/3dimage.webp" alt="3D Illustration">
+        </div>
+
+        <!-- Right Side: Steps -->
+        <div class="steps-section">
+            <h2>📌 How to Use the YouTube Summarizer</h2>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">📌</span>
+                    <p>Copy the YouTube video link you want to summarize.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">📌</span>
+                    <p>Paste the link in the input box above.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">📌</span>
+                    <p>Select a summarization method (TF-IDF or BART).</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">📌</span>
+                    <p>Click "Generate Summary" and wait for the AI to process.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">📌</span>
+                    <p>Scroll up to view the generated summary!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with ❤️ by DATA_PIRATES</p>
+    </footer>
+
+</body>
+</html>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General Styling */
+body {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation with Logo */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+}
+
+/* Glassmorphism Container */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    margin-top: 100px;
+}
+
+/* Headings */
+h1 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+p {
+    font-size: 16px;
+    color: #ddd;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-items: center;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 10px 0 5px;
+    align-self: flex-start;
+}
+
+input, select {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-align: center;
+    outline: none;
+}
+
+/* Output Styling */
+textarea {
+    width: 100%;
+    max-width: 500px;
+    height: 180px;
+    resize: none;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+    text-align: left;
+    line-height: 1.5;
+}
+
+/* Button Styling */
+button {
+    background: linear-gradient(135deg, #ff8c00, #ff3d00);
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s ease;
+    width: 100%;
+    max-width: 500px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff6a00, #ff1e00); 
+    transform: scale(1.05);
+}
+
+/* Steps Section Container */
+.steps-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+    width: 90%;
+    max-width: 1000px;
+}
+
+/* Left Side: Image */
+.image-container {
+    flex: 1;
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+/* Right Side: Steps */
+.steps-section {
+    flex: 1;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+/* Steps */
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Step Pin Styling */
+.step-pin {
+    font-size: 18px;
+    color: #ff8c00; /* You can change this color if needed */
+}
+
+.step p {
+    font-size: 16px;
+    margin: 0;
+}
