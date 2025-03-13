@@ -1,38 +1,28 @@
-# from flask import Flask, render_template, request
-# from src.youtube_summary import summarize_youtube_video
-
-# app = Flask(__name__)
-
-# @app.route("/", methods=["GET", "POST"])
-# def index():
-#     summary = None
-#     if request.method == "POST":
-#         video_url = request.form["video_url"]
-#         method = request.form["method"]
-#         summary = summarize_youtube_video(video_url, method=method)
-    
-#     return render_template("index.html", summary=summary)
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
-
-
-from flask import Flask, render_template, request
+import streamlit as st
 from src.youtube_summary import summarize_youtube_video
-import os
 
-app = Flask(__name__)
+def main():
+    # Set up the Streamlit interface
+    st.title("YouTube Video Summarization")
 
-@app.route("/", methods=["GET", "POST"])
-def index():
-    summary = None
-    if request.method == "POST":
-        video_url = request.form["video_url"]
-        method = request.form["method"]
-        summary = summarize_youtube_video(video_url, method=method)
-    
-    return render_template("index.html", summary=summary)
+    # Input: YouTube Video URL
+    video_url = st.text_input("Enter YouTube Video URL:")
+
+    # Input: Summarization Method
+    method = st.selectbox("Choose summarization method", ["tfidf", "bart"])
+
+    # Summarization Button
+    if st.button("Generate Summary"):
+        if video_url:
+            with st.spinner("Generating summary..."):
+                try:
+                    summary = summarize_youtube_video(video_url, method=method)
+                    st.subheader("Summary:")
+                    st.write(summary)
+                except Exception as e:
+                    st.error(f"Error generating summary: {str(e)}")
+        else:
+            st.warning("Please enter a valid YouTube video URL.")
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Render assigns a dynamic port
-    app.run(host="0.0.0.0", port=port)  # Bind to 0.0.0.0 for public access
+    main()
